@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% import "_macros.html" as macros %} {% block title %}Neptune - 用户信息{% endblock %} {% block page_content
+%}
+<div class="page-header">
+    <div class="profile-header" style="margin-left:0px">
+        <h1>{{ user.user_name }} 详细信息</h1>
+        <p> 员工号：{{ user.user_eid }}</p>
+        <p> 邮箱：<a href="mailto:{{ user.user_email }}">{{ user.user_email }}</a></p>
+        <p> 电话：{{ user.user_tel }}</p>
+        <p> hash密码：{{ user.user_pwd_hash }}</p>
+
+        <p>
+            {% if user == current_user %}
+            <a class="btn btn-default" href="{{ url_for('auth.change_password') }}">更改密码</a> {% endif %} 
+        </p>
+    </div>
+</div>
+{% endblock %}
